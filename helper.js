@@ -102,6 +102,16 @@ const Utils = {
         if (!results) return null;
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    },
+    isGameDone: function (grid) {
+        for (let i = 0; i < grid.length - 1; i++) {
+            if (i + 1 === grid[i]) {
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

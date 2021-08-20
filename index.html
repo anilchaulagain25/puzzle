@@ -15,6 +15,34 @@
         <button class="button" onclick="moveItemByActionAndRerenderTable('down')" type="button">down</button>
         <button class="button" onclick="moveItemByActionAndRerenderTable('left')" type="button">left</button>
         <button class="button" onclick="moveItemByActionAndRerenderTable('right')" type="button">right</button>
+        <span class="font-14" id="showCongrats" style="display: none;">
+            Congrats ! you have solved puzzle. <a onclick="tryNext(event)">try next (click here)... </a>
+        </span>
+        <span class="font-14">
+            Steps : <span id="steps">0</span>
+        </span>
+        <div style="float: right;">
+            <label for="ddlDimension" class="font-14">Dimension</label>
+
+            <select id="ddlDimension">
+                <optgroup label="Easy">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </optgroup>
+                <optgroup label="Medium">
+                    <option value="5">5</option>
+                </optgroup>
+                <optgroup label="Hard">
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </optgroup>
+            </select>
+            <button class="button" onclick="changeDimension()">go</button>
+
+        </div>
+
+
         <hr>
         <div id="tableHtml">
 

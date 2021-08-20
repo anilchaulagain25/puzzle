@@ -1,16 +1,21 @@
 (function () {
     //Variables declarations
     const tableEm = document.getElementById("tableHtml");
+    const ddlDimension = document.getElementById("ddlDimension");
+    const showCongratsEm = document.getElementById("showCongrats");
+    const stepsEm = document.getElementById("steps");
+    let isGameDone = false;
+    let steps = 0;
     //Dimension of the game
     let dimension = parseInt(Utils.getParameterByName("dimension")) || 4;
     if (dimension < 2 || dimension > 8) dimension = 4;
-
+    ddlDimension.value = String(dimension);
     //Temp grid to fill initial elements
     let tempGrid = Array.from(Array(dimension * dimension).keys());
     //Remove first elements
     tempGrid.shift();
     //Shuffle given elemnts
-    tempGrid = Utils.shuffle(tempGrid);
+    //tempGrid = Utils.shuffle(tempGrid);
 
     //For empty space - Random space
     let nullRow = Utils.getRandom(0, dimension);
@@ -49,13 +54,20 @@
     });
 
     window.moveItemByActionAndRerenderTable = function (action) {
-        grid = Utils.move(grid, action);
-        //get html from grid array
-        const html = Utils.convertGridToHtmlTable(grid);
+        if (isGameDone === false) {
+            stepsEm.innerHTML = ++steps;
+            grid = Utils.move(grid, action);
+            //get html from grid array
+            const html = Utils.convertGridToHtmlTable(grid);
 
-        //init load
-        tableEm.innerHTML = html;
-
+            //init load
+            tableEm.innerHTML = html;
+            const merged = [].concat.apply([], grid);
+            if (Utils.isGameDone(merged)) {
+                isGameDone = true;
+                showCongratsEm.style.display = "inline";
+            }
+        }
     }
     tableEm.addEventListener("swl", () => {
         moveItemByActionAndRerenderTable("left");
@@ -69,4 +81,24 @@
     tableEm.addEventListener("swu", () => {
         moveItemByActionAndRerenderTable("up");
     }, false);
+
+    window.changeDimension = function () {
+        const redirect = () => {
+            const di = ddlDimension.value;
+            window.location.href = "/?dimension=" + di;
+        }
+        if (steps > 0) {
+            if (confirm("do you want to exit game")) {
+                redirect();
+            }
+        } else {
+            redirect();
+        }
+
+
+    }
+    window.tryNext = function (event) {
+        event.preventDefault();
+        window.location.href = "/?dimension=" + (parseInt(dimension) + 1);
+    }
 }())
