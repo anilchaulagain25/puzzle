@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle | Nepathya</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="center">
+        <button class="button" onclick="moveItemByActionAndRerenderTable('up')" type="button">up</button>
+        <button class="button" onclick="moveItemByActionAndRerenderTable('down')" type="button">down</button>
+        <button class="button" onclick="moveItemByActionAndRerenderTable('left')" type="button">left</button>
+        <button class="button" onclick="moveItemByActionAndRerenderTable('right')" type="button">right</button>
+        <hr>
+        <div id="tableHtml">
+
+        </div>
+        <hr>
+        <ul style="list-style-type:none;font-size: 14px;;">
+            <li style="display:table-cell; padding:1px;">© i-Puzzle, no rights reserved.</li>
+            <li style="display:table-cell; padding: 1px;">
+                <a href="https://github.com/anilchaulagain25">code</a>
+            </li>
+            <li style="display:table-cell; padding: 1px;">
+                <a href="https://www.linkedin.com/in/anil-chaulagain-b30b2b1bb/">author</a>
+            </li>
+        </ul>
+    </div>
+    <script src="/helper.js"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>
