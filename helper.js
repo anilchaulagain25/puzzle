@@ -2,7 +2,7 @@
 const Utils = {
 
     //Fill grid with 
-    fillGrid: (nullRow, nullColumn, numbers) => {
+    fillGrid: (nullRow, nullColumn, dimension, numbers) => {
         let result = [];
         let indexer = 0;
         for (let i = 0; i < dimension; i++) {
@@ -69,7 +69,6 @@ const Utils = {
             html += "</tr>";
         })
         html += "</tbody></table>";
-        tableEm.innerHTML = html;
         return html;
     },
 
