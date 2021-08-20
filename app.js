@@ -15,7 +15,7 @@
     //Remove first elements
     tempGrid.shift();
     //Shuffle given elemnts
-    //tempGrid = Utils.shuffle(tempGrid);
+    tempGrid = Utils.shuffle(tempGrid);
 
     //For empty space - Random space
     let nullRow = Utils.getRandom(0, dimension);
